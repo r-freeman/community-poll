@@ -82,6 +82,19 @@ class FeatureContext implements Context
     }
 
     /**
+     * @Then the response contains a question
+     */
+    public function theResponseContainsAQuestion()
+    {
+        $data = json_decode($this->responseBody);
+
+        $question = $data[0];
+        if(!property_exists($question, 'question')) {
+            throw new Exception('This is not a question');
+        }
+    }
+
+    /**
      * @Then the question contains a title of :arg1
      * @throws Exception
      */
