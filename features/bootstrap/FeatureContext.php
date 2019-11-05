@@ -80,4 +80,18 @@ class FeatureContext implements Context
         $count = count($data);
         return $count == $arg1;
     }
+
+    /**
+     * @Then the question contains a title of :arg1
+     * @throws Exception
+     */
+    public function theQuestionContainsATitleOf($arg1)
+    {
+        $data = json_decode($this->responseBody);
+        if($data->title == $arg1) {
+
+        } else {
+            throw new Exception('The title does not match.');
+        }
+    }
 }
